@@ -1,2 +1,7 @@
 # Dot files
 .*
+
+# Directores
+*lab/*
+*main/*
+*node_modules/*
