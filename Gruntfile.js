@@ -34,6 +34,14 @@ module.exports = function(grunt) {
 
 		push: {
 			options: { tagName: '%VERSION%' }
+		},
+
+		shell: {
+			build: {
+				command: function (project) {
+					return 'cd ../' + project + '; grunt build;';
+				}
+			}
 		}, 
 		
 		'merge-copy': {
@@ -49,6 +57,7 @@ module.exports = function(grunt) {
 
   // These plugins provide necessary tasks.
 
+	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('grunt-aws-s3');
 	grunt.loadNpmTasks('grunt-merge-copy');
 	grunt.loadNpmTasks('grunt-push-release');
@@ -56,7 +65,9 @@ module.exports = function(grunt) {
 	
   // Default task.
 
-	grunt.registerTask('deploy:major', [ 'clean', 'merge-copy:release', 'push:major', 'aws_s3:release']);
-	grunt.registerTask('deploy:minor', [ 'clean', 'merge-copy:release', 'push:minor', 'aws_s3:release']);
+	grunt.registerTask('deploy:setup', ['clean', 'shell:build:main', 'shell:build:lab',  'merge-copy:release']);
+	
+	grunt.registerTask('deploy:major', ['deploy:setup', 'push:major', 'aws_s3:release']);
+	grunt.registerTask('deploy:minor', ['deploy:setup', 'push:minor', 'aws_s3:release']);
 	
 };
