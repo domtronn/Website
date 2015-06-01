@@ -56,6 +56,7 @@ module.exports = function(grunt) {
 	
   // Default task.
 
-	grunt.registerTask('deploy', [ 'clean', 'merge-copy:release', 'aws_s3:release', 'push:major', 'clean' ]);
+	grunt.registerTask('deploy:major', [ 'clean', 'merge-copy:release', 'push:major', 'aws_s3:release']);
+	grunt.registerTask('deploy:minor', [ 'clean', 'merge-copy:release', 'push:minor', 'aws_s3:release']);
 	
 };

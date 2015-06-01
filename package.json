@@ -1,6 +1,6 @@
 {
   "name": "domcharlesworth.co.uk",
-  "version": "5.0.0",
+  "version": "0.2.0",
   "engines": {
     "node": ">= 0.10.0"
   },
