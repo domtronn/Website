@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="content-script-type" content="text/javascript" />
+    <meta http-equiv="content-style-type" content="text/css" />
+    <meta http-equiv="content-language" content="en" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="author" content="Dom Charlesworth" />
+
+
+    <meta name="description" content="Experiment with L-Systems & Euler Trees" />
+
+    <title>Dom Charlesworth - L-Systems & Euler Trees</title>
+
+    <link rel="shortcut icon" href="../css/lsystem.ico" />
+
+
+    <link href='http://fonts.googleapis.com/css?family=Raleway:100, 300,600,700' rel='stylesheet' type='text/css' />
+
+    <link type="text/css" rel="stylesheet" href="css/libs.min.css" />
+
+    <link type="text/css" rel="stylesheet" href="css/lsystem.min.css" />
+
+    <script type="text/javascript" src="js/libs.min.js"></script>
+
+</head>
+
+<body onresize="resize()">
+
+
+    <div id="controls" class="controls">
+
+        <div style="text-align:center"> <span style="font-style:italic">Press <b>C</b> to hide</span> </div>
+        <div class="control-container">
+            <p>N :
+                <input id="nSlider" class="slider" />
+            </p>
+            <p>A Angle :
+                <input id="aSlider" class="slider" />
+            </p>
+            <p>B Angle :
+                <input id="bSlider" class="slider" />
+            </p>
+            <p>C Angle :
+                <input id="cSlider" class="slider" />
+            </p>
+
+            <p>A Scale :
+                <input id="aScaleSlider" class="slider" />
+            </p>
+            <p>B Scale :
+                <input id="bScaleSlider" class="slider" />
+            </p>
+            <p>C Scale :
+                <input id="cScaleSlider" class="slider" />
+            </p>
+
+            <p>Initial Magnitude :
+                <input id="MSlider" class="slider" />
+            </p>
+
+            <p>Magnitue Scale :
+                <input id="mSlider" class="slider" />
+            </p>
+            <p>Width Scale :
+                <input id="wSlider" class="slider" />
+            </p>
+            <p>Horizontal Offset :
+                <input id="hSlider" class="slider" />
+            </p>
+            <p>Initial Angle :
+                <input id="iSlider" class="slider" />
+            </p>
+            <ul>
+                <li>
+                    <button onclick="resetVars();" class="control-button btn btn-default">
+                        <i class="fa fa-refresh"></i> <b>R</b>ESET </button>
+                </li>
+                <li>
+                    <button onclick="toggleDebug();" class="control-button btn btn-default">
+                        <i class="fa fa-bug"></i> <b>D</b>EBUG </button>
+                </li>
+                <li>
+                    <button onclick="toggleMouse();" class="control-button btn btn-default"> TOGGLE <b>M</b>OUSE</button>
+                </li>
+            </ul>
+
+        </div>
+
+        <button id="control-nav" class="control-nav">
+            <i class="fa fa-chevron-left"></i>
+        </button>
+    </div>
+
+
+
+    <div class="canvas-container">
+        <canvas id="canvas"></canvas>
+    </div>
+
+
+    <div class="footer">
+        Copyright © 2015 Dominic Charlesworth
+        <br>
+        <span style="font-size: 10px; font-style:italic">HTML5 | CSS3 | JavaScript</span>
+    </div>
+
+
+    <script type="text/javascript" src="js/lsystem.min.js"></script>
+
+</body>
+
+</html>

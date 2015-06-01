@@ -8,7 +8,7 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
-		clean: [ "release/" ], 
+		clean: [ "dist/" ], 
 		
 		aws_s3: {
 			release: {
@@ -23,7 +23,7 @@ module.exports = function(grunt) {
           {
             expand: true, 
             dest: '.', 
-            cwd: 'release/<%= pkg.version %>', 
+            cwd: 'dist/', 
             src: ['**'], 
             action: 'upload', 
             differential: true
@@ -31,11 +31,15 @@ module.exports = function(grunt) {
         ]
 			}
 		},
+
+		push: {
+			options: { tagName: '%VERSION%' }
+		}, 
 		
 		'merge-copy': {
 			release: {
 				options: {
-					destination: 'release/',
+					destination: 'dist/',
 					directories: [ 'main/dist/', 'lab/dist/' ]
 				}
 			}
@@ -52,6 +56,6 @@ module.exports = function(grunt) {
 	
   // Default task.
 
-	grunt.registerTask('deploy', [ 'clean', 'merge-copy:release', 'aws_s3:release', 'clean', 'bumpup:major' ]);
+	grunt.registerTask('deploy', [ 'clean', 'merge-copy:release', 'aws_s3:release', 'push:major', 'clean' ]);
 	
 };

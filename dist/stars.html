@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="content-script-type" content="text/javascript" />
+    <meta http-equiv="content-style-type" content="text/css" />
+    <meta http-equiv="content-language" content="en" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="author" content="Dom Charlesworth" />
+
+
+    <meta name="description" content="Experiment with Stars" />
+
+    <title>Dom Charlesworth - Stars</title>
+
+    <link rel="shortcut icon" href="../css/favicon.ico" />
+
+
+    <link href='http://fonts.googleapis.com/css?family=Raleway:100, 300,600,700' rel='stylesheet' type='text/css' />
+
+    <link type="text/css" rel="stylesheet" href="css/libs.min.css" />
+
+    <link type="text/css" rel="stylesheet" href="css/stars.min.css" />
+
+    <script type="text/javascript" src="js/libs.min.js"></script>
+
+</head>
+
+<body onresize="resize()">
+
+
+    <div id="controls" class="dark controls">
+
+        <div style="text-align:center"> <span style="font-style:italic">Press <b>C</b> to hide</span> </div>
+        <div class="control-container">
+            <p style="color:#bfbfbf">Stars :
+                <input id="starsSlider" class="slider" />
+            </p>
+            <p style="color:#bfbfbf">Layers :
+                <input id="layersSlider" class="slider" />
+            </p>
+            <p style="color:#bfbfbf">Parallax Amount :
+                <input id="parallaxSlider" class="slider" />
+            </p>
+            <p style="color:#bfbfbf">Star Size :
+                <input id="sizeSlider" class="slider" />
+            </p>
+            <p style="color:#bfbfbf">Zoom Speed :
+                <input id="zoomSlider" class="slider" />
+            </p>
+            <p style="color:#bfbfbf">Shift Speed :
+                <input id="shiftSlider" class="slider" />
+            </p>
+            <ul>
+                <li>
+                    <button onclick="sf.shift()" class="control-button btn btn-default"><b>S</b>HIFT</button>
+                </li>
+                <li>
+                    <button onclick="sf.zoom()" class="control-button btn btn-default"><b>Z</b>OOM</button>
+                </li>
+                <li>
+                    <button onclick="sf.stop()" class="control-button btn btn-default">STO<b>P</b></button>
+                </li>
+                <li>
+                    <button onclick="newStarField()" class="control-button btn btn-default"><b>R</b>ELOAD</button>
+                </li>
+            </ul>
+
+        </div>
+
+        <button id="control-nav" class="control-nav">
+            <i class="fa fa-chevron-left"></i>
+        </button>
+    </div>
+
+
+
+    <div class="canvas-container">
+        <canvas id="canvas"></canvas>
+    </div>
+
+
+    <div class="dark footer">
+        Copyright © 2015 Dominic Charlesworth
+        <br>
+        <span style="font-size: 10px; font-style:italic">HTML5 | CSS3 | JavaScript</span>
+    </div>
+
+
+    <script type="text/javascript" src="js/stars.min.js"></script>
+
+</body>
+
+</html>

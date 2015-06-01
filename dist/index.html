@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="content-script-type" content="text/javascript" />
+    <meta http-equiv="content-style-type" content="text/css" />
+    <meta http-equiv="content-language" content="en" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="author" content="Dom Charlesworth" />
+    <meta name="description" content="I'm Dom Charlesworth, mathematician turned programmer." />
+    <meta name="keywords" content="Dom Charlesworth, Interactive Resume, PHP programmer, Web developer, Startup, Interactive CV, Resume, CV, Algorithms, PHP, MySQL, OOP" />
+
+    <title>Dom Charlesworth - Software Engineer - Interactive Resume</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Raleway:100, 300,600,700' rel='stylesheet' type='text/css' />
+
+    <link type="text/css" rel="stylesheet" href="css/libs.min.css" />
+
+    <link type="text/css" rel="stylesheet" href="css/main.min.css" />
+
+    <script type="text/javascript" src="js/libs.min.js"></script>
+
+    <script id="contact-template" type="text/x-handlebars-template">
+        <li>
+            <a href={{href}} target="_blank">
+                <span>
+				<i class="{{icon}}" style="font-size:30px;"></i> {{url}}
+			</span>
+            </a>
+        </li>
+    </script>
+
+    <script id="header-template" type="text/x-handlebars-template">
+        <h3 id="{{id}}">{{#capitalise id}}{{/capitalise}}</h3>
+        <ul></ul>
+    </script>
+
+    <script id="abilities-template" type="text/x-handlebars-template">
+        <li class="{{css}}">
+            <span class="ability-title">{{ability}}</span>
+            <span class="ability-score expand">{{#createStars score}}{{/createStars}}</span>
+        </li>
+    </script>
+
+    <script id="nav-template" type="text/x-handlebars-template">
+        <li>
+            <a href="#{{href}}"><i class="{{icon}}"></i></a>
+        </li>
+    </script>
+
+    <script id="experience-template" type="text/x-handlebars-template">
+        <div class="col-md-4">
+            <h4>{{title}}</h4>
+            <p class="experience-duration">{{duration}}</p>
+        </div>
+        <div class="col-md-8">
+            <p>
+                <strong>{{subtitle}}</strong>
+                <div>
+                    <span class="description hide-phone">{{description}}</span>
+                </div>
+                <span class="detail">
+				{{#if location}} <a href="{{#mapRequest mapRef}}{{/mapRequest}}" target="_blank"><i class="fa fa-map-marker"></i> {{location}}</a>  {{/if}}
+				{{#ifCond location '&&' link}}
+				<span class="vertical-separator"> | </span>
+                <br class="show-phone"> {{/ifCond}} {{#if link}} <i class="fa fa-link"></i> <a href="{{link}}"> {{link}}</a> {{/if}}
+                </span>
+            </p>
+        </div>
+    </script>
+
+    <script id="polygon-template" type="text/x-handlebars-template">
+        <g class="polygon-container">
+            <polygon id="p{{j}}" class="polygon" points="{{#getPoints triangle}}{{/getPoints}}" style="fill:{{fill}};">
+            </polygon>
+        </g>
+    </script>
+
+
+</head>
+
+<body onresize="Layout.resizeLandingPanel()">
+
+    <div class="nav-menu">
+        <ul>
+            <li class="light">
+                <a class="fa fa-chevron-down"></a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="nav-anchor"></div>
+    <button id="navigation" class="web nav nav-button">
+        <i class="fa fa-chevron-down"></i>
+    </button>
+
+    <div id="landing-panel" class="section" data-icon="fa fa-home">
+        <div class="pushable underlay"></div>
+        <div class="pushable landing img fadein"></div>
+        <div id="landing-panel-title" class="hideable container">
+            <h1>Dom Charlesworth</h1>
+            <p class="lead">INTERACTIVE RESUME OF A SOFTWARE ENGINEER</p>
+        </div>
+        <div class="pushable overlay"></div>
+    </div>
+
+    <div class="pushable content-container">
+        <div id="background" class="section container" data-icon="fa fa-graduation-cap">
+            <h2>Background</h2>
+
+            <hr/>
+
+            <h3 id="education">Education</h3>
+            <div class="row"></div>
+
+            <hr/>
+
+            <h3 id="experience">Experience</h3>
+            <div class="row"></div>
+
+        </div>
+    </div>
+
+
+    <div class="pushable dark content-container">
+        <div id="abilities" class="section container" data-icon="fa fa-code">
+            <h2>Abilities</h2>
+            <hr/>
+        </div>
+    </div>
+
+
+    <div class="pushable content-container">
+        <div id="projects" class="section container" data-icon="fa fa-flask">
+            <h2>Projects</h2>
+
+            <hr/>
+
+            <h3>Game of Life</h3>
+            <div class="game-of-life">
+                <div class="canvas-controls form-inline">
+                    <button type="button" class="clear btn btn-default btn-md" aria-label="Left Align">
+                        <span><i class="fa fa-refresh"></i> Clear</span>
+                    </button>
+                    <button type="button" class="pause btn btn-default btn-md" aria-label="Left Align">
+                        <span><i class="fa fa-pause"></i> Pause</span>
+                    </button>
+                    <button type="button" class="play btn btn-default btn-md" aria-label="Left Align">
+                        <span><i class="fa fa-play"></i> Play</span>
+                    </button>
+                </div>
+
+                <form class="form-inline">
+                    <div class="form-group">
+                        <span>Create a </span>
+                        <div class="select-container" style="display: inline-block;"></div>
+                    </div>
+                    <div class="form-group">
+                        <span> at position </span>
+                        <input type="text" class="form-control x" placeholder="0" style="width: 40px;"></input>
+                        <input type="text" class="form-control y" placeholder="0" style="width: 40px;"></input>
+                    </div>
+                </form>
+
+                <div style="text-align: center;">
+                    <button class="btn btn-default generate" type="button">Generate!</button>
+                </div>
+
+                <hr/>
+
+                <div class="canvas-container">
+                    <canvas class="canvas"></canvas>
+                </div>
+
+                <hr/>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="svg-window" class="pushable content-container" style="height:500px; overflow:hidden; background-color: transparent;">
+        <svg id="contact-svg" style="width:100%; height:200%; position:fixed;"></svg>
+    </div>
+
+    <div class="pushable dark content-container">
+        <div id="contact" class="section container" data-icon="fa fa-phone">
+            <h2>Contact</h2>
+
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="no-bullets left"></ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="no-bullets right"></ul>
+                </div>
+            </div>
+            <hr>
+
+            <div class="row">
+                <div class="text-center">
+                    <p>I have a more in depth paper CV</p>
+                    <a href="views/cv.pdf" class="btn btn-primary" target="_blank">
+                        <i class="fa fa-download"></i>Download it here
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer content-container dark pushable">
+        Copyright © 2015 Dominic Charlesworth
+        <br>
+        <span style="font-size: 10px; font-style:italic">HTML5 | CSS3 | JavaScript</span>
+    </div>
+
+
+    <script type="text/javascript" src="js/app.min.js"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            /* Layout.resizeLandingPanel(); */
+
+            $(window).scroll(function(evt) {
+                var windowHeight = $(window).height(),
+                    topHeight = (windowHeight - $('#landing-panel .container').height()) / 2;
+                $('#landing-panel-title').css('top', topHeight + ($(window).scrollTop() * 0.1));
+                $('#contact-svg').css('top', ($(window).scrollTop() - $('#svg-window ~ .content-container').position().top) * 0.3);
+
+                Navigation.updatePositionalEvents();
+                Navigation.updateNavMenuHighlight();
+
+            })
+        })
+    </script>
+
+</body>
+
+</html>
