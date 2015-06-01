@@ -40,7 +40,7 @@ module.exports = function(grunt) {
 			release: {
 				options: {
 					destination: 'dist/',
-					directories: [ 'main/dist/', 'lab/dist/' ]
+					directories: [ '../main/dist/', '../lab/dist/' ]
 				}
 			}
 		}
