@@ -8,7 +8,6 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
-		bumpup: 'package.json',
 		clean: [ "release/" ], 
 		
 		aws_s3: {
@@ -21,14 +20,14 @@ module.exports = function(grunt) {
           sslEnabled: false
 				},
 				files: [
-            {
-                expand: true, 
-                dest: '.', 
-                cwd: 'release/<%= pkg.version %>', 
-                src: ['**'], 
-                action: 'upload', 
-                differential: true
-            }
+          {
+            expand: true, 
+            dest: '.', 
+            cwd: 'release/<%= pkg.version %>', 
+            src: ['**'], 
+            action: 'upload', 
+            differential: true
+          }
         ]
 			}
 		},
@@ -36,7 +35,7 @@ module.exports = function(grunt) {
 		'merge-copy': {
 			release: {
 				options: {
-					destination: 'release/<%= pkg.version %>',
+					destination: 'release/',
 					directories: [ 'main/dist/', 'lab/dist/' ]
 				}
 			}
@@ -46,9 +45,9 @@ module.exports = function(grunt) {
 
   // These plugins provide necessary tasks.
 
-	grunt.loadNpmTasks('grunt-bumpup');
 	grunt.loadNpmTasks('grunt-aws-s3');
 	grunt.loadNpmTasks('grunt-merge-copy');
+	grunt.loadNpmTasks('grunt-push-release');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	
   // Default task.
