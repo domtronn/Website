@@ -5,6 +5,8 @@ var env = require("./.env.js"),
 
 module.exports = function (grunt) {
 
+	var message = grunt.option('m');
+	
   // Project configuration.
   grunt.initConfig({
 		pkg: grunt.file.readJSON("package.json"),
@@ -33,7 +35,10 @@ module.exports = function (grunt) {
 		},
 
 		push: {
-			options: { tagName: "%VERSION%" }
+			options: {
+				tagName: "%VERSION%", 
+				commitMessage: message || "Release v%VERSION%"
+			}
 		},
 
 		shell: {
@@ -69,5 +74,5 @@ module.exports = function (grunt) {
 
 	grunt.registerTask("deploy:major", ["deploy:setup", "push:major", "aws_s3:release"]);
 	grunt.registerTask("deploy:minor", ["deploy:setup", "push:minor", "aws_s3:release"]);
-
+	
 };
