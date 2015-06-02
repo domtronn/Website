@@ -72,6 +72,20 @@
         </div>
     </script>
 
+    <script id="project-template" type="text/x-handlebars-template">
+        <li>
+            <div class="item">
+                <div class="img-container col-md-4">
+                    <img src="../images/{{imgSrc}}"></img>
+                </div>
+                <div class="description col-md-8">
+                    <h3>{{title}}</h3>
+                    <span>{{description}}</span>
+                </div>
+            </div>
+        </li>
+    </script>
+
     <script id="polygon-template" type="text/x-handlebars-template">
         <g class="polygon-container">
             <polygon id="p{{j}}" class="polygon" points="{{#getPoints triangle}}{{/getPoints}}" style="fill:{{fill}};">
@@ -133,51 +147,29 @@
     </div>
 
 
+    <script type="text/javascript" src="../js/lib/masonry-3.3.0.min.js"></script>
+
     <div class="pushable content-container">
-        <div id="projects" class="section container" data-icon="fa fa-flask">
+        <div id="projects" class="section container" style="max-width:1000px;" data-icon="fa fa-flask">
             <h2>Projects</h2>
 
             <hr/>
 
-            <h3>Game of Life</h3>
-            <div class="game-of-life">
-                <div class="canvas-controls form-inline">
-                    <button type="button" class="clear btn btn-default btn-md" aria-label="Left Align">
-                        <span><i class="fa fa-refresh"></i> Clear</span>
-                    </button>
-                    <button type="button" class="pause btn btn-default btn-md" aria-label="Left Align">
-                        <span><i class="fa fa-pause"></i> Pause</span>
-                    </button>
-                    <button type="button" class="play btn btn-default btn-md" aria-label="Left Align">
-                        <span><i class="fa fa-play"></i> Play</span>
-                    </button>
-                </div>
+            <ul id="project-list">
+                <!-- <li>
+			<a href="gameoflife.html">
+			<div class="item" style="text-align:center">
+			<img src="../images/gameoflife.png"></img>
+			<div class="description">
+			<h3>Game of Life</h3>
+			<span>An implementation of <b>Game of Life</b> in HTML5 Canvas and JavaScript.</span>
+			</div>
+			</div>
+			</a>
+			</li> -->
 
-                <form class="form-inline">
-                    <div class="form-group">
-                        <span>Create a </span>
-                        <div class="select-container" style="display: inline-block;"></div>
-                    </div>
-                    <div class="form-group">
-                        <span> at position </span>
-                        <input type="text" class="form-control x" placeholder="0" style="width: 40px;"></input>
-                        <input type="text" class="form-control y" placeholder="0" style="width: 40px;"></input>
-                    </div>
-                </form>
+            </ul>
 
-                <div style="text-align: center;">
-                    <button class="btn btn-default generate" type="button">Generate!</button>
-                </div>
-
-                <hr/>
-
-                <div class="canvas-container">
-                    <canvas class="canvas"></canvas>
-                </div>
-
-                <hr/>
-
-            </div>
         </div>
     </div>
 
@@ -234,6 +226,8 @@
 
                 Navigation.updatePositionalEvents();
                 Navigation.updateNavMenuHighlight();
+
+
 
             })
         })
