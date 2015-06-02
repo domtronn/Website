@@ -74,15 +74,17 @@
 
     <script id="project-template" type="text/x-handlebars-template">
         <li>
-            <div class="item">
-                <div class="img-container col-md-4">
-                    <img src="../images/{{imgSrc}}"></img>
+            <a href="{{href}}">
+                <div class="item">
+                    <div class="img-container col-md-4">
+                        <img src="../images/{{imgSrc}}"></img>
+                    </div>
+                    <div class="description col-md-8">
+                        <h3>{{title}}</h3>
+                        <span>{{description}}</span>
+                    </div>
                 </div>
-                <div class="description col-md-8">
-                    <h3>{{title}}</h3>
-                    <span>{{description}}</span>
-                </div>
-            </div>
+            </a>
         </li>
     </script>
 
