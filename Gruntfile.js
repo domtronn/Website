@@ -74,5 +74,6 @@ module.exports = function (grunt) {
 
 	grunt.registerTask("deploy:major", ["deploy:setup", "push:major", "aws_s3:release"]);
 	grunt.registerTask("deploy:minor", ["deploy:setup", "push:minor", "aws_s3:release"]);
+	grunt.registerTask("deploy:patch", ["deploy:setup", "push:patch", "aws_s3:release"]);
 	
 };
