@@ -78,6 +78,7 @@
 			<div class="project-item">
 				<div class="img-container col-md-4">
 					<img src="../images/projects/{{imgSrc}}"></img>
+					<span class="info">{{info}}</span>
 				</div>
 				<div class="description col-md-8">
 					<h3>{{title}}</h3>
@@ -98,7 +99,7 @@
 
 </head>
 
-<body onresize="Layout.resizeLandingPanel()">
+<body onresize="Layout.resizeLandingPanel();">
 
     <div class="nav-menu">
         <ul>
@@ -162,7 +163,7 @@
 
 
     <div id="svg-window" class="pushable svg content-container hide-phone">
-        <svg id="svg" style="width:100%; height:200%; position:fixed;"></svg>
+        <svg id="svg"></svg>
     </div>
 
     <div class="pushable dark content-container">
