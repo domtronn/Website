@@ -37,7 +37,7 @@ module.exports = function (grunt) {
 		push: {
 			options: {
 				tagName: "%VERSION%", 
-				commitMessage: message || "Release v%VERSION%"
+				commitMessage: "Release v%VERSION%" + (message ? ' - ' + message : '')
 			}
 		},
 
