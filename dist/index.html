@@ -13,7 +13,7 @@
     <meta name="description" content="I'm Dom Charlesworth, mathematician turned programmer." />
     <meta name="keywords" content="Dom Charlesworth, Interactive Resume, PHP programmer, Web developer, Startup, Interactive CV, Resume, CV, Algorithms, PHP, MySQL, OOP" />
 
-    <title>Dom Charlesworth - Software Engineer - Interactive Resume</title>
+    <title>Dom Charlesworth</title>
 
     <link href='http://fonts.googleapis.com/css?family=Raleway:100, 300,600,700' rel='stylesheet' type='text/css' />
 
@@ -40,7 +40,9 @@
 
     <script id="abilities-template" type="text/x-handlebars-template">
         <li class="{{css}}">
-            <span class="ability-title">{{ability}}</span>
+            <span class="ability-title">{{ability}}
+			{{#if extra}} <span class="hide-phone">{{extra}}</span> {{/if}}
+            </span>
             <span class="ability-score expand">{{#createStars score}}{{/createStars}}</span>
         </li>
     </script>
