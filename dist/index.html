@@ -62,13 +62,13 @@
             <p>
                 <strong>{{subtitle}}</strong>
                 <div>
-                    <span class="description hide-phone">{{description}}</span>
+                    <span class="description hide-narrow">{{description}}</span>
                 </div>
                 <span class="detail">
 				{{#if location}} <a href="{{#mapRequest mapRef}}{{/mapRequest}}" target="_blank"><i class="fa fa-map-marker"></i> {{location}}</a>  {{/if}}
 				{{#ifCond location '&&' link}}
 				<span class="vertical-separator"> | </span>
-                <br class="show-phone"> {{/ifCond}} {{#if link}} <i class="fa fa-link"></i> <a href="{{link}}"> {{link}}</a> {{/if}}
+                <br class="show-narrow"> {{/ifCond}} {{#if link}} <i class="fa fa-link"></i> <a href="{{link}}"> {{link}}</a> {{/if}}
                 </span>
             </p>
         </div>
@@ -165,12 +165,20 @@
     </div>
 
 
-    <div id="svg-window" class="pushable svg content-container hide-phone">
+    <div id="svg-window" class="pushable svg content-container hide-tablet">
         <svg id="svg"></svg>
     </div>
 
     <div class="pushable dark content-container">
-        <div id="contact" class="section container" data-icon="fa fa-phone">
+        <div id="about" class="section container" data-icon="fa fa-phone">
+            <h2>About Me</h2>
+
+        </div>
+    </div>
+
+
+    <div class="pushable darker content-container">
+        <div id="contact" class="container" data-icon="fa fa-phone">
             <h2>Contact</h2>
 
             <hr>
