@@ -148,9 +148,14 @@
     </div>
 
 
+    <div id="svg-window" class="pushable svg content-container hide-tablet">
+        <svg id="svg"></svg>
+    </div>
+
+
     <div class="pushable dark content-container">
-        <div id="abilities" class="section container" data-icon="fa fa-code" data-title="ABILITIES">
-            <h2>Abilities</h2>
+        <div id="abilities" class="section container" data-icon="fa fa-code" data-title="EXPERTISE">
+            <h2>Expertise</h2>
             <hr/>
         </div>
     </div>
@@ -167,15 +172,17 @@
         </div>
     </div>
 
-
-    <div id="svg-window" class="pushable svg content-container hide-tablet">
-        <svg id="svg"></svg>
-    </div>
-
     <div class="pushable dark content-container">
         <div id="about" class="section container" data-icon="fa fa-phone" data-title="ABOUT ME">
-            <h2>About Me</h2>
-
+            <div class="profile col-md-5">
+                <div class="img-container">
+                    <img src="images/about.jpg" />
+                </div>
+                <div class="img-overlay"></div>
+            </div>
+            <div class="col-md-7">
+                <h2>About Me</h2>
+            </div>
         </div>
     </div>
 
@@ -225,6 +232,8 @@
                     topHeight = (windowHeight - $('#landing-panel .container').height()) / 2;
                 $('#landing-panel-title').css('top', topHeight + ($(window).scrollTop() * 0.1));
                 $('#svg').css('top', ($(window).scrollTop() - $('#svg-window ~ .content-container').position().top) * 0.3);
+
+                $('#about img').css('bottom', (100 * (($('#about').offset().top - window.scrollY) / windowHeight)) - 77);
 
                 Navigation.updatePositionalEvents();
                 Navigation.updateNavMenuHighlight();
