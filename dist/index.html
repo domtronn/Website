@@ -102,6 +102,10 @@
         </g>
     </script>
 
+    <script id="image-template" type="text/x-handlebars-template">
+        <img src="{{src}}" data-offset="{{offset}}" />
+    </script>
+
 
 </head>
 
@@ -176,9 +180,8 @@
         <div id="about" class="section container" data-icon="fa fa-phone" data-title="ABOUT ME">
             <div class="profile col-md-5">
                 <div class="img-container">
-                    <img src="images/about.jpg" />
                 </div>
-                <div class="img-overlay"></div>
+                <div class="overlay"></div>
             </div>
             <div class="col-md-7">
                 <h2>About Me</h2>
@@ -233,7 +236,7 @@
                 $('#landing-panel-title').css('top', topHeight + ($(window).scrollTop() * 0.1));
                 $('#svg').css('top', ($(window).scrollTop() - $('#svg-window ~ .content-container').position().top) * 0.3);
 
-                $('#about img').css('bottom', (100 * (($('#about').offset().top - window.scrollY) / windowHeight)) - 77);
+                $('#about img').css('bottom', (100 * (($('#about').offset().top - window.scrollY) / windowHeight)) - $('#about img').attr('data-offset'));
 
                 Navigation.updatePositionalEvents();
                 Navigation.updateNavMenuHighlight();
