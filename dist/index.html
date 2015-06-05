@@ -103,7 +103,7 @@
     </script>
 
     <script id="image-template" type="text/x-handlebars-template">
-        <img src="{{src}}" data-offset="{{offset}}" />
+        <img src="{{src}}" data-offset="{{offset}}" style="bottom: -{{offset}}px;" />
     </script>
 
 
@@ -230,18 +230,22 @@
         $(function() {
             /* Layout.resizeLandingPanel(); */
 
-            $(window).scroll(function(evt) {
-                var windowHeight = $(window).height(),
-                    topHeight = (windowHeight - $('#landing-panel .container').height()) / 2;
-                $('#landing-panel-title').css('top', topHeight + ($(window).scrollTop() * 0.1));
-                $('#svg').css('top', ($(window).scrollTop() - $('#svg-window ~ .content-container').position().top) * 0.3);
+            if ($(window).width() > 1025) {
 
-                $('#about img').css('bottom', (100 * (($('#about').offset().top - window.scrollY) / windowHeight)) - $('#about img').attr('data-offset'));
+                $(window).scroll(function(evt) {
+                    var windowHeight = $(window).height(),
+                        topHeight = (windowHeight - $('#landing-panel .container').height()) / 2;
+                    $('#landing-panel-title').css('top', topHeight + ($(window).scrollTop() * 0.1));
+                    $('#svg').css('top', ($(window).scrollTop() - $('#svg-window ~ .content-container').position().top) * 0.3);
 
-                Navigation.updatePositionalEvents();
-                Navigation.updateNavMenuHighlight();
+                    $('#about img').css('bottom', (100 * (($('#about').offset().top - window.scrollY) / windowHeight)) - $('#about img').attr('data-offset'));
 
-            })
+                    Navigation.updatePositionalEvents();
+                    Navigation.updateNavMenuHighlight();
+
+                });
+
+            }
         })
     </script>
 
