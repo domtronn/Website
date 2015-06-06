@@ -13,7 +13,7 @@
     <meta name="description" content="I'm Dom Charlesworth, mathematician turned programmer." />
     <meta name="keywords" content="Dom Charlesworth, Interactive Resume, PHP programmer, Web developer, Startup, Interactive CV, Resume, CV, Algorithms, PHP, MySQL, OOP" />
 
-    <meta name="version" content="1.17.3" />
+    <meta name="version" content="1.17.4" />
 
 
     <title>Dom Charlesworth</title>
@@ -238,7 +238,7 @@
 
 
     <div class="pushable darker footer content-container">
-        Copyright © 2015 Dominic Charlesworth <i> 1.17.3 </i>
+        Copyright © 2015 Dominic Charlesworth <i> 1.17.4 </i>
         <br>
         <span style="font-size: 10px; font-style:italic">HTML5 | CSS3 | JavaScript</span>
     </div>
@@ -252,9 +252,9 @@
 
             $('#landing-panel .img').addClass('fadein');
 
-            if ($(window).width() > 1025) {
+            $(window).scroll(function(evt) {
+                if ($(window).width() > 1025) {
 
-                $(window).scroll(function(evt) {
                     var windowHeight = $(window).height(),
                         topHeight = (windowHeight - $('#landing-panel .container').height()) / 2;
                     $('#landing-panel-title').css('top', topHeight + ($(window).scrollTop() * 0.1));
@@ -262,12 +262,13 @@
 
                     $('#about img').css('bottom', (100 * (($('#about').offset().top - window.scrollY) / windowHeight)) - $('#about img').attr('data-offset'));
 
-                    Navigation.updatePositionalEvents();
-                    Navigation.updateNavMenuHighlight();
+                }
 
-                });
+                Navigation.updatePositionalEvents();
+                Navigation.updateNavMenuHighlight();
 
-            }
+            });
+
         })
     </script>
 
