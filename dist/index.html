@@ -129,7 +129,7 @@
 
     <div id="landing-panel" class="section" data-icon="fa fa-home" data-title="HOME">
         <div class="pushable underlay"></div>
-        <div class="pushable landing img fadein"></div>
+        <div class="pushable landing img"></div>
         <div id="landing-panel-title" class="hideable container">
             <h1>Dom Charlesworth</h1>
             <p class="lead">INTERACTIVE RESUME OF A SOFTWARE ENGINEER</p>
@@ -190,6 +190,10 @@
                 <h2>About Me</h2>
                 <div class="content">
                     <span> Hi! I'm <strong>Dom Charlesworth</strong>.</span>
+                    <br/>
+                    <p>
+                        I'm a <strong>Software Engineer</strong> with a strong focus on Web Development, Infrastructure and Optimization. I'm currently based in Manchester. I love my guitar and music. I love traveling and want to see the world!
+                    </p>
                 </div>
 
             </div>
@@ -236,6 +240,8 @@
     <script type="text/javascript">
         $(function() {
             /* Layout.resizeLandingPanel(); */
+
+            $('#landing-panel .img').addClass('fadein');
 
             if ($(window).width() > 1025) {
 
