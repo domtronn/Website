@@ -46,6 +46,11 @@ module.exports = function (grunt) {
 				command: function (project) {
 					return "cd ../" + project + "; grunt build;";
 				}
+			},
+			bump: {
+				command: function (project, release) {
+					return "cd ../" + project + "; grunt bumpup:" + release;
+				}
 			}
 		},
 
@@ -71,9 +76,10 @@ module.exports = function (grunt) {
   // Default task.
 
 	grunt.registerTask("deploy:setup", ["clean", "shell:build:main", "shell:build:lab",  "merge-copy:release"]);
+	grunt.registerTask("deploy:setup", ["clean", "shell:build:main", "shell:build:lab",  "merge-copy:release"]);
 
-	grunt.registerTask("deploy:major", ["deploy:setup", "push:major", "aws_s3:release"]);
-	grunt.registerTask("deploy:minor", ["deploy:setup", "push:minor", "aws_s3:release"]);
-	grunt.registerTask("deploy:patch", ["deploy:setup", "push:patch", "aws_s3:release"]);
+	grunt.registerTask("deploy:major", ["shell:bump:main:major", "deploy:setup", "push:major", "aws_s3:release"]);
+	grunt.registerTask("deploy:minor", ["shell:bump:main:minor", "deploy:setup", "push:minor", "aws_s3:release"]);
+	grunt.registerTask("deploy:patch", ["shell:bump:main:patch", "deploy:setup", "push:patch", "aws_s3:release"]);
 	
 };
