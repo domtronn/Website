@@ -13,7 +13,7 @@
     <meta name="description" content="I'm Dom Charlesworth, mathematician turned programmer." />
     <meta name="keywords" content="Dom Charlesworth, Interactive Resume, PHP programmer, Web developer, Startup, Interactive CV, Resume, CV, Algorithms, PHP, MySQL, OOP" />
 
-    <meta name="version" content="1.21.12" />
+    <meta name="version" content="1.22.0" />
 
 
     <title>Dom Charlesworth</title>
@@ -114,6 +114,16 @@
 </head>
 
 <body>
+
+    <div id="loading-screen">
+        <div class="spinner-container">
+            <div class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+            </div>
+        </div>
+    </div>
+
     <div id="primary-color" class="primary-color"></div>
     <div id="secondary-color" class="secondary-color"></div>
     <div class="nav-menu">
@@ -243,7 +253,7 @@
 
 
     <div class="pushable darker footer content-container">
-        Copyright © 2015 Dominic Charlesworth <i> 1.21.12 </i>
+        Copyright © 2015 Dominic Charlesworth <i> 1.22.0 </i>
         <br>
         <span style="font-size: 10px; font-style:italic">HTML5 | CSS3 | JavaScript</span>
     </div>
@@ -252,14 +262,13 @@
     <script type="text/javascript" src="js/app.min.js"></script>
 
     <script type="text/javascript">
-        console.log("Page begun loading");
-
         $(function() {
-            $('body').removeClass('loading');
+            $('#landing-panel').addClass('ready');
+            $('#loading-screen').addClass('fadeout');
 
-            /* Layout.resizeLandingPanel(); */
-
-            $('#landing-panel .img').addClass('fadein');
+            setTimeout(function() {
+                $('#loading-screen').remove();
+            }, 1000);
 
             $(window).scroll(function(evt) {
                 if ($(window).width() > 1025) {
