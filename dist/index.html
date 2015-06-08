@@ -13,7 +13,7 @@
     <meta name="description" content="I'm Dom Charlesworth, mathematician turned programmer." />
     <meta name="keywords" content="Dom Charlesworth, Interactive Resume, PHP programmer, Web developer, Startup, Interactive CV, Resume, CV, Algorithms, PHP, MySQL, OOP" />
 
-    <meta name="version" content="1.22.2" />
+    <meta name="version" content="1.22.3" />
 
 
     <title>Dom Charlesworth</title>
@@ -65,7 +65,7 @@
             <p class="experience-duration">{{duration}}</p>
         </div>
         <div class="col-md-8">
-            <p>
+            <p class="experience-subtitle">
                 <strong><span class="hide-narrow">{{position}}</span>{{subtitle}}</strong>
                 <div>
                     <span class="description hide-narrow">{{description}}</span>
@@ -113,7 +113,7 @@
 
 </head>
 
-<body>
+<body onresize="Layout.resizeLandingPanel()">
     <div id="loading-screen">
         <div class="spinner-container">
             <div class="spinner">
@@ -252,7 +252,7 @@
 
 
     <div class="pushable darker footer content-container">
-        Copyright © 2015 Dominic Charlesworth <i> 1.22.2 </i>
+        Copyright © 2015 Dominic Charlesworth <i> 1.22.3 </i>
         <br>
         <span style="font-size: 10px; font-style:italic">HTML5 | CSS3 | JavaScript</span>
     </div>
@@ -262,6 +262,7 @@
 
     <script type="text/javascript">
         $(function() {
+
             $('#landing-panel').addClass('ready');
             $('#loading-screen').addClass('fadeout');
 
@@ -286,8 +287,6 @@
                 Navigation.updateNavMenuHighlight();
 
             });
-
-            Navigation.updatePositionalEvents();
         })
     </script>
 
