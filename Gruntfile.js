@@ -81,5 +81,6 @@ module.exports = function (grunt) {
 	grunt.registerTask("deploy:major", ["shell:bump:main:major", "deploy:setup", "push:major", "aws_s3:release"]);
 	grunt.registerTask("deploy:minor", ["shell:bump:main:minor", "deploy:setup", "push:minor", "aws_s3:release"]);
 	grunt.registerTask("deploy:patch", ["shell:bump:main:patch", "deploy:setup", "push:patch", "aws_s3:release"]);
+	grunt.registerTask("deploy", ["deploy:patch"]);
 	
 };
