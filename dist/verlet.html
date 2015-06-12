@@ -53,6 +53,49 @@
 
         <div class="hide-phone" style="text-align:center"> <span style="font-style:italic">Press <b>C</b> to hide</span> </div>
         <div class="control-container">
+            <p>
+                <span class="title">Width : </span>
+                <input id="width" class="slider" />
+            </p>
+            <p>
+                <span class="title">Height : </span>
+                <input id="height" class="slider" />
+            </p>
+            <p>
+                <span class="title">Spacing : </span>
+                <input id="spacing" class="slider" />
+            </p>
+            <p>
+                <span class="title"> Pin Width : </span>
+                <input id="pinwidth" class="slider" />
+            </p>
+            <p>
+                <span class="title"> Offset : </span>
+                <input id="offset" class="slider" />
+            </p>
+
+            <p>
+                <span class="title"> Colour : </span>
+                <div class="color-picker-container">
+                    <input id="color-picker" type="text" value="#9862a4" class="form-control color {hash:true,caps:false,onImmediateChange:'setColor(this);'}" />
+                </div>
+            </p>
+
+            <ul>
+                <li>
+                    <button onclick="togglePoints()" class="control-button btn btn-default">TOGGLE <b>P</b>OINTS</button>
+                </li>
+                <li>
+                    <button onclick="toggleConstraints()" type="button" class="control-button btn btn-default">TOGGLE <b>L</b>INKS</button>
+                </li>
+                <li>
+                    <button onclick="toggleColourful()" type="button" class="control-button btn btn-default">TOGGLE COLOU<b>R</b>S</button>
+                </li>
+                <li>
+                    <button onclick="toggleRainbow()" type="button" class="control-button btn btn-default">TOGGLE RAINBOW</button>
+                </li>
+
+            </ul>
 
         </div>
 
@@ -61,6 +104,7 @@
         </button>
     </div>
 
+    <div id="fps-counter" class="show"> </div>
 
 
     <div class="canvas-container">
